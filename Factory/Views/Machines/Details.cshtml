@@ -1,0 +1,23 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine;
+
+<h1>Machine Details</h1>
+<h2>@Html.DisplayFor(model => model.Name)</h2>
+
+<h2>Engineer List: </h2>
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>0 Licensed engineers</p>
+}
+else
+{
+  <ul>
+  @foreach(var join in Model.JoinEntities)
+  {
+    <li>@join.Machine.Name</li>
+  }
+  </ul>
+}
