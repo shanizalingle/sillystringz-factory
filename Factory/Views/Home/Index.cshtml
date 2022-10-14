@@ -1,0 +1,26 @@
+@{
+    Layout = "_Layout";
+  }
+
+@using Factory.Models;
+@model Factory.Models.EngineerMachine;
+
+<h1>Dr. Sillystringz Factory</h1>
+
+<h2>Engineers</h2>
+<ul>
+  @foreach(Engineer engineer in Model)
+  {
+    <li>@Html.ActionLink($"{engineer.Name}", "Details", new { id = engineer.EngineerId } )</li>
+  }
+</ul>
+
+<h2>Machinery</h2>
+<ul>
+  @foreach(Machine machine in Model)
+  {
+    <li>@Html.ActionLink($"{machine.Name}", "Details", new { id = machine.MachineId } )</li>
+  }
+</ul>
+
+
