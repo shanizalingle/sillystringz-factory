@@ -13,6 +13,9 @@
   @Html.Label("Machine Warnings: ")
   @Html.TextBoxFor(model => model.Warning)
 
+  @Html.Label("Select Engineers")
+  @Html.DropDownList("EngineerId")
+
   <input type="submit" value="Create" />
 }
-<p>@Html.ActionLink("View Machines", "Home", "Index")</p>Factory/Views/Machines/Details.cshtml
+<button><a href="/">Home</a></button>

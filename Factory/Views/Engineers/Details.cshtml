@@ -6,11 +6,12 @@
 
 <h1>Engineer Details</h1>
 <h2>@Html.DisplayFor(model => model.Name)</h2>
+<h4>Education: @Html.DisplayFor(model => model.Education)</h4>
 
-<h2>Machinery List: </h2>
+<h4>Machinery List: </h4>
 @if(@Model.JoinEntities.Count == 0)
 {
-  <p>0 Machines for repair</p>
+  <p>0 Machinery for repair</p>
 }
 else
 {
@@ -18,6 +19,14 @@ else
   @foreach(var join in Model.JoinEntities)
   {
     <li>@join.Machine.Name</li>
+
+    @using (Html.BeginForm("DeleteMachine", "Engineers"))
+    {
+      @Html.Hidden("joinId", @join.EngineerMachineId)
+      <input type="submit" value="Delete"/>
+    }
   }
   </ul>
 }
+<button><a href="/engineers/edit">Edit</a></button>
+<button><a href="/">Home</a></button>

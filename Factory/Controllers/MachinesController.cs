@@ -52,13 +52,13 @@ namespace Factory.Controllers
 
     public ActionResult Edit(int id)
     {
-      Machine thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
+      var thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
       ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Name", "Education");
       return View(thisMachine);
     }
 
     [HttpPost]
-    public ActionResult Edit(Machine machine, int EngineerId, string Name, string Warning)
+    public ActionResult Edit(Machine machine, int EngineerId)
     {
       if (EngineerId != 0)
       {
@@ -93,7 +93,7 @@ namespace Factory.Controllers
       var joinEntry = _db.EngineerMachine.FirstOrDefault(entry => entry.EngineerMachineId == joinId);
       _db.EngineerMachine.Remove(joinEntry);
       _db.SaveChanges();
-      return RedirectToAction("Index", "Home");
+      return RedirectToAction("Delete");
     }
 
     public ActionResult Delete(int id)

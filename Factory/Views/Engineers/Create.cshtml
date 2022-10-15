@@ -13,6 +13,9 @@
   @Html.Label("Engineer Education: ")
   @Html.TextBoxFor(model => model.Education)
 
+  @Html.Label("Select Machines")
+  @Html.DropDownList("MachineId")
+
   <input type="submit" value="Create" />
 }
-<p>@Html.ActionLink("View Engineers", "Home", "Index")</p>
+<button><a href="/">Home</a></button>

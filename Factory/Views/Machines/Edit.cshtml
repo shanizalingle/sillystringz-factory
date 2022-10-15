@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+
+<h1>Edit @Html.DisplayFor(model => model.Name)</h1>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.MachineId)
+
+  @Html.Label("Machine Name: ")
+  @Html.EditorFor(model => model.Name)
+
+  @Html.Label("Machine Warnings: ")
+  @Html.EditorFor(model => model.Warning)
+
+  @Html.Label("Select Engineers: ")
+  @Html.DropDownList("EngineerId")
+
+  <input type="submit" value="Save" />
+}
+
+<button><a href="/">Home</a></button>

@@ -6,18 +6,27 @@
 
 <h1>Machine Details</h1>
 <h2>@Html.DisplayFor(model => model.Name)</h2>
+<h4>Warning: @Html.DisplayFor(model => model.Warning)</h4>
 
-<h2>Engineer List: </h2>
+<h4>Engineer List: </h4>
 @if(@Model.JoinEntities.Count == 0)
 {
-  <p>0 Licensed engineers</p>
+  <p>0 Certified engineers</p>
 }
 else
 {
   <ul>
   @foreach(var join in Model.JoinEntities)
   {
-    <li>@join.Machine.Name</li>
+    <li>@join.Engineer.Name</li>
+
+    @using (Html.BeginForm("DeleteEngineer", "Machines"))
+    {
+      @Html.Hidden("joinId", @join.EngineerMachineId)
+      <input type="submit" value="Delete"/>
+    }
   }
   </ul>
 }
+<button><a href="/machines/edit">Edit</a></button>
+<button><a href="/">Home</a></button>
